@@ -1,0 +1,11 @@
+services:
+  keyball61:
+    container_name: keyball61
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./keyball/qmk_firmware/keyboards/keyball:/qmk_firmware/keyboards/keyball
+      - ./build:/qmk_firmware/.build
+    working_dir: /qmk_firmware
+    command: make -j8 SKIP_GIT=yes keyball/keyball61:custom
